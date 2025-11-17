@@ -8,3 +8,4 @@ df.head()
 # %%
 df.info()
 # %%
+wkwkkw
