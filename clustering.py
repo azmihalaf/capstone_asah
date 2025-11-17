@@ -9,3 +9,4 @@ df.head()
 df.info()
 # %%
 wkwkkw
+WKWK LAGI
