@@ -1,70 +1,116 @@
-```markdown
-# RFM Customer Segmentation using K-Means
+# 📊 RFM Customer Segmentation using K-Means
 
-## Overview
-This project focuses on performing Customer Segmentation using the RFM (Recency, Frequency, Monetary) model, combined with the K-Means clustering algorithm. The goal is to identify distinct customer groups based on their purchasing behavior, which can then be used for targeted marketing strategies.
+## 📌 Overview
+Proyek ini bertujuan untuk melakukan **Customer Segmentation** menggunakan metode  
+**RFM (Recency, Frequency, Monetary)** yang dikombinasikan dengan algoritma  
+**K-Means Clustering**.
 
-## Dataset
-The analysis uses a retail transactional dataset, `preprocessed_retail_data.csv`, containing details of customer purchases. Key columns include:
-- `InvoiceNo`: Invoice number
-- `StockCode`: Product code
-- `Description`: Product description
-- `Quantity`: Quantity of the product purchased
-- `InvoiceDate`: Date and time of the invoice
-- `UnitPrice`: Unit price of the product
-- `CustomerID`: Unique identifier for each customer
-- `Country`: Country of purchase
-- `TotalPrice`: Total price for the item (Quantity * UnitPrice)
+Hasil segmentasi pelanggan ini dapat digunakan untuk menyusun **strategi pemasaran
+yang lebih tepat sasaran**, meningkatkan **retensi pelanggan**, dan
+**memaksimalkan nilai bisnis**.
 
-## Methodology
-The following steps were performed to achieve customer segmentation:
+---
 
-1.  **Data Loading & Preprocessing**: The dataset was loaded into a Pandas DataFrame. The `InvoiceDate` column was converted to datetime objects, and a `TotalPrice` column was calculated.
-2.  **RFM Calculation**: For each unique `CustomerID`, the following metrics were calculated:
-    *   **Recency**: Number of days since the last purchase.
-    *   **Frequency**: Total number of unique invoices (transactions).
-    *   **Monetary**: Total amount spent by the customer.
-3.  **Data Scaling**: The RFM features were scaled using `StandardScaler` to ensure that all features contribute equally to the clustering process.
-4.  **Determining Optimal Number of Clusters (K)**:
-    *   The Elbow Method (using SSE) was employed to observe the optimal `k` value.
-    *   The Silhouette Score was calculated for different `k` values (from 2 to 10) to identify the best-fitting number of clusters, which was found to be 4 in this analysis.
-5.  **K-Means Clustering**: The K-Means algorithm was applied to the scaled RFM data with the optimal `k` (4) to group customers into clusters.
-6.  **Cluster Interpretation**: The mean RFM values for each cluster were analyzed to understand the characteristics of each segment. Visualizations (scatter plots and heatmaps) were used to further interpret the clusters.
-7.  **Customer Segmentation**: Based on the RFM values and cluster characteristics, custom segment names were assigned:
-    *   **VIP**: High Frequency, High Monetary, Low Recency.
-    *   **Loyal**: Good Frequency, Medium Monetary, Good Recency.
-    *   **At-Risk**: Good Frequency, High Monetary, High Recency (but not too high).
-    *   **Lost**: Very High Recency, Low Frequency, Low Monetary.
-    *   **Low-Value**: Low Frequency, Low Monetary, Recency varies.
-8.  **Model Saving**: The trained K-Means model was saved as `kmeans_model.pkl` using `joblib` for future use.
+## 📂 Dataset
+Dataset yang digunakan adalah **`preprocessed_retail_data.csv`**, berisi data
+transaksi ritel dengan kolom utama berikut:
 
-## Results & Insights
-The analysis identified 4 distinct customer clusters. After interpretation, these clusters were further categorized into 5 segments: VIP, Loyal, At-Risk, Lost, and Low-Value. Each segment has unique purchasing behaviors, allowing for tailored marketing and retention strategies.
+| Kolom | Deskripsi |
+|------|----------|
+| `InvoiceNo` | Nomor invoice |
+| `StockCode` | Kode produk |
+| `Description` | Deskripsi produk |
+| `Quantity` | Jumlah produk yang dibeli |
+| `InvoiceDate` | Tanggal dan waktu transaksi |
+| `UnitPrice` | Harga satuan produk |
+| `CustomerID` | ID unik pelanggan |
+| `Country` | Negara transaksi |
+| `TotalPrice` | Total harga (Quantity × UnitPrice) |
 
-*   **VIP Customers**: These are your most valuable customers, purchasing recently, frequently, and spending the most. They require exclusive offers and loyalty programs.
-*   **Loyal Customers**: These customers buy often and spend a decent amount. They can be nurtured to become VIPs through reward programs.
-*   **At-Risk Customers**: These were once good customers but haven't purchased recently. Re-engagement campaigns are crucial for this segment.
-*   **Lost Customers**: Customers who haven't purchased for a long time. Aggressive promotions might be needed, but they are a lower priority.
-*   **Low-Value Customers**: New or infrequent buyers with low spending. Focus on product education and light acquisition campaigns.
+---
 
-## How to Replicate
-To replicate this analysis, follow these steps:
+## 🧠 Methodology
+Tahapan analisis yang dilakukan dalam proyek ini adalah sebagai berikut:
 
-1.  **Environment Setup**: Ensure you have Python installed. It's recommended to use a virtual environment.
-2.  **Install Dependencies**: Install the required libraries using pip:
-    ```bash
-    pip install pandas numpy scikit-learn matplotlib seaborn plotly joblib
-    ```
-3.  **Download Dataset**: Obtain the `preprocessed_retail_data.csv` file and place it in the appropriate directory (e.g., `/content/drive/MyDrive/Dataset/` if running in Google Colab, or adjust the path in the code).
-4.  **Run the Notebook**: Execute the Python code cells sequentially in the provided Jupyter/Colab notebook. The notebook walks through each step of the RFM calculation, clustering, and segmentation.
+### 1. Data Loading & Preprocessing
+- Dataset dimuat menggunakan **Pandas**
+- Kolom `InvoiceDate` dikonversi ke format `datetime`
+- Kolom `TotalPrice` dihitung dari `Quantity × UnitPrice`
 
-## Dependencies
-- `pandas`
-- `numpy`
-- `scikit-learn`
-- `matplotlib`
-- `seaborn`
-- `plotly`
-- `joblib`
+### 2. RFM Calculation
+Perhitungan RFM dilakukan untuk setiap `CustomerID`:
+- **Recency**: Selisih hari sejak transaksi terakhir
+- **Frequency**: Jumlah transaksi unik
+- **Monetary**: Total nilai transaksi pelanggan
 
-```
+### 3. Feature Scaling
+- Data RFM distandarisasi menggunakan **StandardScaler**
+- Tujuan: memastikan semua fitur memiliki kontribusi yang seimbang dalam proses clustering
+
+### 4. Menentukan Jumlah Cluster Optimal
+- **Elbow Method (SSE)** digunakan untuk melihat titik siku
+- **Silhouette Score** digunakan untuk mengevaluasi kualitas cluster
+- Jumlah cluster optimal diperoleh pada **k = 4**
+
+### 5. K-Means Clustering
+- Algoritma **K-Means** diterapkan pada data RFM yang telah diskalakan
+- Pelanggan dikelompokkan ke dalam **4 cluster**
+
+### 6. Interpretasi Cluster
+- Analisis nilai rata-rata RFM pada setiap cluster
+- Visualisasi dilakukan menggunakan:
+  - Scatter Plot
+  - Heatmap RFM
+
+### 7. Customer Segmentation
+Cluster kemudian diberi label segmen berdasarkan karakteristik bisnis:
+
+| Segment | Karakteristik |
+|-------|--------------|
+| **VIP** | Recency rendah, Frequency & Monetary tinggi |
+| **Loyal** | Frequency baik, Monetary menengah, Recency baik |
+| **At-Risk** | Frequency & Monetary tinggi, namun Recency mulai tinggi |
+| **Lost** | Recency sangat tinggi, Frequency & Monetary rendah |
+| **Low-Value** | Frequency & Monetary rendah, Recency bervariasi |
+
+### 8. Model Saving
+- Model K-Means disimpan sebagai **`kmeans_model.pkl`**
+- Penyimpanan dilakukan menggunakan library `joblib`
+- Model dapat digunakan kembali untuk segmentasi pelanggan baru
+
+---
+
+## 📈 Results & Insights
+Analisis menghasilkan **4 cluster utama** yang diinterpretasikan menjadi
+**5 segmen pelanggan**:
+
+- **VIP Customers**  
+  Pelanggan paling bernilai, sering dan baru bertransaksi.  
+  Fokus: program loyalitas dan penawaran eksklusif.
+
+- **Loyal Customers**  
+  Pelanggan setia dengan potensi menjadi VIP.  
+  Fokus: reward program dan upselling.
+
+- **At-Risk Customers**  
+  Pelanggan bernilai tinggi yang mulai jarang bertransaksi.  
+  Fokus: re-engagement campaign.
+
+- **Lost Customers**  
+  Pelanggan lama yang sudah tidak aktif.  
+  Fokus: promosi agresif dengan prioritas rendah.
+
+- **Low-Value Customers**  
+  Pelanggan dengan transaksi dan nilai rendah.  
+  Fokus: edukasi produk dan akuisisi ringan.
+
+---
+
+## 🔁 How to Replicate
+
+### 1. Environment Setup
+Pastikan Python telah terinstal. Disarankan menggunakan virtual environment.
+
+### 2. Install Dependencies
+```bash
+pip install pandas numpy scikit-learn matplotlib seaborn plotly joblib
