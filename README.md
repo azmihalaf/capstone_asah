@@ -114,3 +114,28 @@ Pastikan Python telah terinstal. Disarankan menggunakan virtual environment.
 ### 2. Install Dependencies
 ```bash
 pip install pandas numpy scikit-learn matplotlib seaborn plotly joblib
+```
+
+### 3. Dataset
+Letakkan file `preprocessed_retail_data.csv` pada direktori yang sesuai. Contoh Google Colab:
+```bash
+/content/drive/MyDrive/Dataset/
+```
+
+### 4. Run Notebook
+Jalankan notebook secara berurutan untuk:
+- Perhitungan RFM
+- Clustering
+- Visualisasi
+- Segmentasi Pelanggan
+
+---
+
+## 📦 Dependencies
+- pandas
+- numpy
+- scikit-learn
+- matplotlib
+- seaborn
+- plotly
+- joblib
