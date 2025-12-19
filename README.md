@@ -84,25 +84,41 @@ Cluster kemudian diberi label segmen berdasarkan karakteristik bisnis:
 Analisis menghasilkan **4 cluster utama** yang diinterpretasikan menjadi
 **5 segmen pelanggan**:
 
-- **VIP Customers**  
-  Pelanggan paling bernilai, sering dan baru bertransaksi.  
-  Fokus: program loyalitas dan penawaran eksklusif.
+1. Segmen VIP - Segmen ini berisi pelanggan dengan frekuensi pembelian tinggi, nilai transaksi besar, dan baru saja melakukan transaksi.
+Ciri-ciri :
+  - Recency rendah (baru belanja)
+  - Frequency tinggi
+  - Monetary sangat tinggi <br>
+<br>**Interpretasi:** Pelanggan ini merupakan kontributor pendapatan terbesar dan memiliki nilai strategis yang tinggi. Perusahaan harus memprioritaskan program eksklusif seperti loyalty premium, early access, atau personalisasi penawaran.
 
-- **Loyal Customers**  
-  Pelanggan setia dengan potensi menjadi VIP.  
-  Fokus: reward program dan upselling.
+2. Segmen Loyal - Segmen ini terdiri dari pelanggan yang membeli cukup sering dan memiliki nilai transaksi stabil.
+Ciri-ciri:
+  - Frequency di atas rata-rata
+  - Monetary menengah
+  - Recency cukup baik<br>
+<br>**Interpretasi:** Pelanggan ini sudah memiliki engagement yang kuat dan berpotensi menjadi VIP jika diberikan insentif tambahan. Program cocok: poin reward, diskon rutin, membership.
 
-- **At-Risk Customers**  
-  Pelanggan bernilai tinggi yang mulai jarang bertransaksi.  
-  Fokus: re-engagement campaign.
+3. Segmen At-Risk - Segmen ini menunjukkan pelanggan yang sebelumnya aktif tetapi belakangan mulai jarang berbelanja.
+Ciri-ciri:
 
-- **Lost Customers**  
-  Pelanggan lama yang sudah tidak aktif.  
-  Fokus: promosi agresif dengan prioritas rendah.
+  - Recency tinggi
+  - Frequency masih cukup tinggi
+  - Monetary pernah besar <br>
+<br>**Interpretasi:** Pelanggan ini berisiko pindah ke kompetitor. Perlu strategi retensi seperti email reminder, voucher comeback, atau campaign re-engagement.
 
-- **Low-Value Customers**  
-  Pelanggan dengan transaksi dan nilai rendah.  
-  Fokus: edukasi produk dan akuisisi ringan.
+4. Segmen Lost - Pelanggan yang sudah sangat lama tidak melakukan transaksi.
+Ciri-ciri:
+  - Recency sangat tinggi
+  - Frequency rendah
+  - Monetary rendah <br>
+<br>**Interpretasi:** Segmen ini memiliki potensi rendah untuk kembali. Bisa diberi promosi agresif, tetapi tidak menjadi prioritas utama.
+
+5. Segmen Low-Value - Pelanggan dengan aktivitas dan nilai pembelian rendah.
+Ciri-ciri:
+  - Frequency rendah
+  - Monetary kecil
+  - Recency bervariasi <br>
+<br>**Interpretasi:** Pelanggan ini biasanya baru pertama kali belanja atau hanya pembeli insidental. Perlu edukasi produk dan campaign akuisisi ringan.
 
 ---
 
